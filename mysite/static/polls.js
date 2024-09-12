@@ -12,11 +12,12 @@ function saveAnswer(pollId, answerId) {
     })
 
     fetchPromise
-        .then(response => {
-            const data = response.json()
+        .then(response => response.json()
+        ).then( data =>{
             showAnswerValue(answerId, data)
             showFlash()
         })
+    
 }
 
 function showFlash() {
@@ -39,7 +40,7 @@ function showFormInput(answerId) {
     inputElement.style.display = 'block'
 }
 
-function showAnswerValue(answerId, data) {
+async function showAnswerValue(answerId, data) {
     const inputElement = document.getElementById('edit-'+ answerId)
     inputElement.style.display = 'none'
     const valueElement = document.getElementById('value-'+ answerId)
